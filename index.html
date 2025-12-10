@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anniversary Template V2</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Poppins, sans-serif;
+        background: url("pic.jpg") center/cover no-repeat fixed;
+        color: white;
+        text-align: center;
+        overflow-x: hidden;
+      }
+
+      h1 {
+        margin-top: 24px;
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Floating Hearts */
+      .heart {
+        position: fixed;
+        bottom: -10px;
+        color: #ff9a9e;
+        font-size: 20px;
+        animation: floatUp 4s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-600px) scale(1.4);
+          opacity: 0;
+        }
+      }
+
+      /* Image Slideshow */
+      .slideshow {
+        width: 90%;
+        max-width: 420px;
+        height: 420px;
+        margin: auto;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      .slides {
+        display: flex;
+        width: 300%;
+        transition: 0.6s ease;
+      }
+
+      .slides img {
+        width: 100%;
+        object-fit: cover;
+      }
+
+      /* Video Slideshow */
+      .video-box {
+        width: 90%;
+        max-width: 420px;
+        margin: 25px auto;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+      }
+
+      .video-box video {
+        width: 100%;
+        border-radius: 18px;
+      }
+
+      .message {
+        width: 90%;
+        max-width: 600px;
+        margin: 20px auto;
+        font-size: 20px;
+        line-height: 1.6;
+        opacity: 0;
+        animation: fadeIn 2.5s forwards;
+        animation-delay: 0.8s;
+      }
+
+      /* Auto-play button */
+      #startBtn {
+        margin-top: 18px;
+        padding: 12px 24px;
+        font-size: 18px;
+        border: none;
+        border-radius: 12px;
+        background: #ff6b6b;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>❤️ Happy Anniversary 11 Month❤️😘</h1>
+
+    <button id="startBtn" onclick="startExperience()">ចុចលើនឹងហូវម៉ាកៗដើម្បីស្តាប់បទចម្រៀង❤️😘</button>
+
+    <!-- Floating Hearts Script -->
+    <script>
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+        heart.innerHTML = "❤";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+    </script>
+    <!-- Audio -->
+    <audio id="song" src="Music1.mp3"></audio>
+
+    <div class="message" id="secretMessage" style="display: none">
+      ថ្ងៃពិសេសបំផុតមួយនេះជាការចងចាំដ៏មានតម្លៃប្តីប្រពន្ធយើង ​សម្រាប់រយះពេលកន្លង សូមឲ្យពេលអនាគតពោរពេញដោយស្នេហា
+      សេចក្តីសុខ និងភាពរីករាយ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​រហូតណាប្រពន្ធសម្លាញ់​ ពីមួយថ្ងៃទៅមួយថ្ងៃ យើងកាន់ផ្អែមល្ហែមរហូតបែបនេះរហូត ហើយប្តីសូមជូនពរប្រពន្ធអោយមានសុខភាពល្អ រៀនកាន់តែពូកែ សម្រស់កាន់តែស្អាត មានលុយចាយច្រើនៗ ទៅណាមកណាសុវត្ថិភាពគ្រប់ពេល ហើយយើងនៅតែផ្អែមល្ហែមបែបនេះរហូតម៉ាកៗ❤️😘
+    </div>
+
+    <button
+      id="revealBtn"
+      onclick="revealMessage()"
+      style="
+        margin: 20px;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        background: #4ade80;
+        color: black;
+        cursor: pointer;
+      "
+    >
+      បង្ហាញសារជូនពរសម្រាប់ប្រពន្ធដ៏សែនខ្ចូតរបស់ប្តី❤️😘
+    </button>
+
+    <script>
+      function revealMessage() {
+        document.getElementById("secretMessage").style.display = "block";
+        document.getElementById("revealBtn").style.display = "none";
+      }
+    </script>
+
+    <script>
+      let started = false;
+      function startExperience() {
+        if (!started) {
+          setInterval(createHeart, 400);
+          document.getElementById("song").play();
+          started = true;
+        }
+        document.getElementById("startBtn").style.display = "none";
+      }
+
+      // CLICK IMAGE → PLAY/PAUSE MUSIC
+      const audio = document.getElementById("song");
+      function toggleMusic() {
+        if (audio.paused) audio.play();
+        else audio.pause();
+      }
+
+      // IMAGE SLIDESHOW
+      let index = 0;
+      function slideShow() {
+        index++;
+        if (index > 2) index = 0;
+        document.getElementById(
+          "slideContainer"
+        ).style.transform = `translateX(-${index * 100}%)`;
+      }
+      setInterval(slideShow, 3000);
+    </script>
+  </body>
+</html>
